@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  openmediavault:
+    image: openmediavault/openmediavault
+    container_name: openmediavault
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+      - 445:445
+      - 139:139
+    volumes:
+      - /srv/dev-disk-by-id-ata-SAMPLE_DISK1-part1:/srv/dev-disk-by-id-ata-SAMPLE_DISK1-part1
+      - /srv/dev-disk-by-id-ata-SAMPLE_DISK2-part1:/srv/dev-disk-by-id-ata-SAMPLE_DISK2-part1
+      - /srv/dev-disk-by-id-ata-SAMPLE_DISK3-part1:/srv/dev-disk-by-id-ata-SAMPLE_DISK3-part1
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - openmediavault_network
+
+networks:
+  openmediavault_network:
+    driver: bridge
