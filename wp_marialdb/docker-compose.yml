@@ -4,13 +4,13 @@ services:
   db:
     image: mariadb:latest
     volumes:
-      - /wordpress/db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rtpas
+      MYSQL_DATABASE: mariadb
+      MYSQL_USER: dbusr
+      MYSQL_PASSWORD: dbpas
 
   wordpress:
     image: wordpress:latest
@@ -21,11 +21,11 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: dbusr
+      WORDPRESS_DB_PASSWORD: dbpas
+      WORDPRESS_DB_NAME: mariadb
     volumes:
-      - /wordpress/wp_data:/var/www/html
+      - ./wp_data:/var/www/html
 volumes:
   db_data:
   wp_data:
