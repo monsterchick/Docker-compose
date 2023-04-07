@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: 'mysql:5.7'
+    container_name: mysql
     volumes:
       - ./db_data:/var/lib/mysql
     restart: always
@@ -14,6 +15,7 @@ services:
       - wpnet
   wordpress:
     image: 'wordpress:latest'
+    container_name: wordpress
     depends_on:
       - db
     ports:
