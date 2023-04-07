@@ -3,13 +3,13 @@ services:
   db:
     image: 'mysql:5.7'
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root-pas
-      MYSQL_DATABASE: dbname
+      MYSQL_ROOT_PASSWORD: rtpas
+      MYSQL_DATABASE: mysql
       MYSQL_USER: admin
-      MYSQL_PASSWORD: pas
+      MYSQL_PASSWORD: adpas
     networks:
       - wpnet
   wordpress:
@@ -17,15 +17,15 @@ services:
     depends_on:
       - db
     ports:
-      - '1314:80'
+      - '80:80'
     restart: always
     volumes:
-      - ['wp_data:/var/www/html']
+      - ./wp_data:/var/www/html
     environment:
       WORDPRESS_DB_HOST: 'db:3306'
       WORDPRESS_DB_USER: admin
-      WORDPRESS_DB_PASSWORD: pas
-      WORDPRESS_DB_NAME: dbname
+      WORDPRESS_DB_PASSWORD: adpas
+      WORDPRESS_DB_NAME: mysql
     networks:
       - wpnet
 volumes:
