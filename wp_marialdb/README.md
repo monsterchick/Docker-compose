@@ -3,7 +3,7 @@ docker-compose version 1.29.2, build unknown
 
 
 ```
-sh make_folder.sh
+sh make_folders.sh
 ```
 ```
 docker-compose up -d
