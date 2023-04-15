@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  alpine:
+    image: alpine
+    container_name: vuepress
+    command: sleep infinity
+    ports:
+      - "8080:8080"
+      - "8081:8081"
